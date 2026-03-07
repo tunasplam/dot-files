@@ -1,6 +1,6 @@
 
 format = '''
-[╭─┉ ](bold blue)$time$directory$git_branch$git_metrics$python
+[╭─┉](bold blue)$time$git_branch$git_metrics$python$directory
 [╰─ \$ ](bold blue)
 '''
 
@@ -13,25 +13,32 @@ scan_timeout = 30
 # same for commands
 command_timeout = 1000
 
+[directory]
+format = '[ $path]($style)[$read_only]($read_only_style) '
+truncate_to_repo = true
+truncation_length = 3
+truncation_symbol = '.../'
+
 [git_branch]
+format = '[┉\[ $symbol$branch]($style) '
 symbol = ' '
 
 [git_metrics]
 added_style = 'bold green'
 deleted_style = 'bold red'
 only_nonzero_diffs = true
-format = '([+$added]($added_style)) ([-$deleted]($deleted_style) )'
+format = '([+$added]($added_style)) ([-$deleted]($deleted_style)) [\]](bold blue)'
 disabled = false
 
 [python]
-format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = '[┉\[ $symbol$pyenv_prefix($version )(\($virtualenv\) )\]]($style)'
 version_format = 'v${raw}'
 symbol = ' '
 style = 'bold yellow'
 pyenv_prefix = 'pyenv'
 
 [time]
-format = '[\[$time\] ]($style)'
+format = '[\[ $time \]]($style)'
 time_format = '%T'
 style = 'bold yellow'
 disabled = false
