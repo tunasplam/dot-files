@@ -14,6 +14,10 @@ source ~/.local/share/zsh-history-substring-search.zsh
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
+# navigate by whole words
+bindkey "^[[1;5C" forward-word   # Ctrl + Right
+bindkey "^[[1;5D" backward-word  # Ctrl + Left
+
 alias python=python3
 alias ptyhon=python3
 alias pthyon=python3
