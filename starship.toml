@@ -1,0 +1,21 @@
+
+format = '''
+[╭─┉ ](bold blue)$directory$git_branch$git_metrics
+[╰─ \$ ](bold blue) 
+'''
+
+# how long to wait (in ms) to check files under current directory
+scan_timeout = 30
+# same for commands
+command_timeout = 300
+
+[git_branch]
+symbol = ' '
+
+[git_metrics]
+added_style = 'bold green'
+deleted_style = 'bold red'
+only_nonzero_diffs = true
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+disabled = false
+
