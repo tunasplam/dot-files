@@ -1,13 +1,17 @@
 
 format = '''
-[╭─┉ ](bold blue)$directory$git_branch$git_metrics
-[╰─ \$ ](bold blue) 
+[╭─┉ ](bold blue)$time$directory$git_branch$git_metrics$python
+[╰─ \$ ](bold blue)
+'''
+
+right_format = '''
+$status
 '''
 
 # how long to wait (in ms) to check files under current directory
 scan_timeout = 30
 # same for commands
-command_timeout = 300
+command_timeout = 1000
 
 [git_branch]
 symbol = ' '
@@ -16,6 +20,25 @@ symbol = ' '
 added_style = 'bold green'
 deleted_style = 'bold red'
 only_nonzero_diffs = true
-format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+format = '([+$added]($added_style)) ([-$deleted]($deleted_style) )'
 disabled = false
 
+[python]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+version_format = 'v${raw}'
+symbol = ' '
+style = 'bold yellow'
+pyenv_prefix = 'pyenv'
+
+[time]
+format = '[\[$time\] ]($style)'
+time_format = '%T'
+style = 'bold yellow'
+disabled = false
+
+[status]
+format = '[$symbol Previous command failed! $status]($style) '
+symbol = '❌'
+success_symbol = ''
+failure_style = 'bold red'
+disabled = false
