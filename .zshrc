@@ -27,7 +27,11 @@ alias minecraft=java -jar /home/jordan/TechnicLauncher.jar
 source /home/jordan/.config/desktop-background
 gsettings set org.gnome.desktop.background picture-uri-dark file://$DESKTOP_BACKGROUND
 python -m pywal -qi $DESKTOP_BACKGROUND
-neofetch
+pokefetch show slowpoke
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
